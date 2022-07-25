@@ -1,16 +1,24 @@
-import Menu from 'components/Menu';
-import Cardapio from 'pages/Cardapio';
-import Inicio from 'pages/Inicio';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-export default function AppRouter() {
+import Menu from 'components/Menu';
+import PagianPadrao from 'components/PaginaPadrao';
+import Inicio from 'pages/Inicio';
+import Cardapio from 'pages/Cardapio';
+
+const AppRouter = () => {
   return (
     <Router>
-      <Menu />
-      <Routes>
-        <Route path='/' element={<Inicio />} />
-        <Route path='/cardapio' element={<Cardapio />} />
-      </Routes>
+      <main>
+        <Menu />
+        <Routes>
+          <Route path='/' element={<PagianPadrao />}>
+            <Route index element={<Inicio />} />
+            <Route path='cardapio' element={<Cardapio />} />
+          </Route>
+        </Routes>
+      </main>
     </Router>
   );
-}
+};
+
+export default AppRouter;
